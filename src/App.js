@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import Product from './components/Product';
 import Cart from './components/Cart';
 import data from './data/data';
+import { Switch, Route } from "react-router-dom";
 
 function App() {
   const { products } = data;
@@ -45,10 +46,17 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation countCartItems = {cartItems.length } totalPrice = {totalPrice}/>
-      <Product onAdd ={ onAdd } products={products} />
-      <Cart itemsPrice = {itemsPrice} taxPrice = {taxPrice} totalPrice = {totalPrice} onDecrease={ onRemove } onIncrease = {onIncrease} cartItems={cartItems}/>
+      <Navigation countCartItems={cartItems.length} totalPrice={totalPrice} />
       
+      <Switch>
+        <Route exact path='/'>
+          <Product onAdd ={ onAdd } products={products} />
+        </Route>
+
+        <Route path='/cart'>
+          <Cart itemsPrice = {itemsPrice} taxPrice = {taxPrice} totalPrice = {totalPrice} onDecrease={ onRemove } onIncrease = {onIncrease} cartItems={cartItems} />
+        </Route>
+      </Switch>
     </div>
   );
 }

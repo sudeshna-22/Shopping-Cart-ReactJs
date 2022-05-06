@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 export default function Navigation(props) {
 
@@ -7,12 +8,12 @@ export default function Navigation(props) {
   return (
       <header className='row block center'>
           <div>
-              <a href="#">
+              <Link to="/">
                   <h1>Shopping Cart</h1>
-              </a>
+              </Link>
           </div>
           <div>
-              <a href='#'>
+              <Link to='/cart'>
                   
                   Cart { ' '}
                   {countCartItems ? (
@@ -20,14 +21,14 @@ export default function Navigation(props) {
                   ) : (
                     ''
                 )}
-              </a>
-              <a href='#'>                  
+              </Link>
+              <Link to='/cart'>                  
                   Total { ' '}
                   {totalPrice ? (
                       <button className='badge'>{totalPrice }</button>
                   ) : (
                     '$0.00'
-                )}</a>
+                )}</Link>
           </div>
     </header>
 )
